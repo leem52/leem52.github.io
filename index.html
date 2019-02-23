@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="data/Large_Pop_Places_2copy_1.js"></script>
+        <script src="data/WA_DC_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[10.55360719371163,-133.61900056901155],[56.07903586103658,-61.68821678488499]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_OpenStreetMap_0 = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_Large_Pop_Places_2copy_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Population</th>\
+                        <td>' + (feature.properties['pop_max'] !== null ? Autolinker.link(String(feature.properties['pop_max'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Large_Pop_Places_2copy_1_0(feature) {
+            if (feature.properties['q2wHide_scalerank'] >= 0.000000 && feature.properties['q2wHide_scalerank'] <= 1.600000 ) {
+                return {
+                pane: 'pane_Large_Pop_Places_2copy_1',
+                radius: 1.6,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,223,248,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 1.600000 && feature.properties['q2wHide_scalerank'] <= 3.200000 ) {
+                return {
+                pane: 'pane_Large_Pop_Places_2copy_1',
+                radius: 2.5,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,159,242,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 3.200000 && feature.properties['q2wHide_scalerank'] <= 4.800000 ) {
+                return {
+                pane: 'pane_Large_Pop_Places_2copy_1',
+                radius: 3.4,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(73,101,203,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 4.800000 && feature.properties['q2wHide_scalerank'] <= 6.400000 ) {
+                return {
+                pane: 'pane_Large_Pop_Places_2copy_1',
+                radius: 4.3,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,95,142,1.0)',
+            }
+            }
+            if (feature.properties['q2wHide_scalerank'] >= 6.400000 && feature.properties['q2wHide_scalerank'] <= 8.000000 ) {
+                return {
+                pane: 'pane_Large_Pop_Places_2copy_1',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,42,89,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_Large_Pop_Places_2copy_1');
+        map.getPane('pane_Large_Pop_Places_2copy_1').style.zIndex = 401;
+        map.getPane('pane_Large_Pop_Places_2copy_1').style['mix-blend-mode'] = 'normal';
+        var layer_Large_Pop_Places_2copy_1 = new L.geoJson(json_Large_Pop_Places_2copy_1, {
+            attribution: '',
+            pane: 'pane_Large_Pop_Places_2copy_1',
+            onEachFeature: pop_Large_Pop_Places_2copy_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Large_Pop_Places_2copy_1_0(feature));
+            },
+        });
+        var cluster_Large_Pop_Places_2copy_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Large_Pop_Places_2copy_1.addLayer(layer_Large_Pop_Places_2copy_1);
+
+        bounds_group.addLayer(layer_Large_Pop_Places_2copy_1);
+        cluster_Large_Pop_Places_2copy_1.addTo(map);
+        function pop_WA_DC_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Population</th>\
+                        <td>' + (feature.properties['pop_max'] !== null ? Autolinker.link(String(feature.properties['pop_max'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WA_DC_2_0() {
+            return {
+                pane: 'pane_WA_DC_2',
+                radius: 13.2,
+                opacity: 1,
+                color: 'rgba(184,8,8,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,8,8,1.0)',
+            }
+        }
+        function style_WA_DC_2_1() {
+            return {
+                pane: 'pane_WA_DC_2',
+                radius: 14.4,
+                opacity: 1,
+                color: 'rgba(255,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,1.0)',
+            }
+        }
+        map.createPane('pane_WA_DC_2');
+        map.getPane('pane_WA_DC_2').style.zIndex = 402;
+        map.getPane('pane_WA_DC_2').style['mix-blend-mode'] = 'normal';
+        var layer_WA_DC_2 = new L.geoJson.multiStyle(json_WA_DC_2, {
+            attribution: '',
+            pane: 'pane_WA_DC_2',
+            onEachFeature: pop_WA_DC_2,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_WA_DC_2_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_WA_DC_2_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_WA_DC_2);
+        map.addLayer(layer_WA_DC_2);
+        setBounds();
+        </script>
+    </body>
+</html>
